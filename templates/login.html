@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080809;
+      --surface: #0f0f11;
+      --surface2: #141416;
+      --border: #1c1c20;
+      --border2: #2a2a30;
+      --accent: #ffffff;
+      --accent2: #a0a0b0;
+      --muted: #44444f;
+      --text: #e8e8f0;
+      --danger: #ff4444;
+      --success: #22cc66;
+      --r: 12px;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .dot-group { display: flex; gap: 5px; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border2);
+    }
+    .badge {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 8px;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+    .sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .sub a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border2);
+      padding-bottom: 1px;
+    }
+    .sub a:hover { color: var(--accent); border-color: var(--accent2); }
+    .field { margin-bottom: 1rem; }
+    label {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+    input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus { border-color: var(--border2); }
+    input::placeholder { color: var(--muted); font-size: 0.85rem; }
+    .pw-wrap { position: relative; }
+    .pw-wrap input { padding-right: 2.8rem; }
+    .eye {
+      position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; padding: 0; line-height: 1;
+    }
+    .eye:hover { color: var(--accent2); }
+    .eye svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .btn {
+      width: 100%; margin-top: 1.4rem;
+      padding: 0.75rem;
+      background: var(--accent);
+      color: #080809;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      border: none; border-radius: var(--r);
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      letter-spacing: 0.01em;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn:active { transform: scale(0.99); }
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 1.8rem 0;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .divider span { font-size: 0.72rem; color: var(--muted); }
+    .alt-link {
+      display: block; text-align: center;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .alt-link a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border2);
+      padding-bottom: 1px;
+    }
+    .alt-link a:hover { color: var(--accent); border-color: var(--accent2); }
+    footer {
+      margin-top: 2.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    footer span { color: var(--border2); }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="dot-group">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span class="badge">LOGIN</span>
+  </div>
+
+  <h1>Bem-vindo de volta</h1>
+  <p class="sub">Não tem conta? <a href="/registro">Criar agora</a></p>
+
+  <form method="POST" action="/login">
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email"/>
+    </div>
+
+    <div class="field">
+      <label for="senha">Senha</label>
+      <div class="pw-wrap">
+        <input type="password" id="senha" name="senha" placeholder="Sua senha" required autocomplete="current-password"/>
+        <button type="button" class="eye" onclick="togglePw()" aria-label="Mostrar senha">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Entrar</button>
+  </form>
+
+  <div class="divider"><span>ou</span></div>
+  <span class="alt-link">Novo por aqui? <a href="/registro">Crie sua conta grátis</a></span>
+</div>
+
+<footer>desenvolvido por <span>//</span> MATHEUS.DEV</footer>
+
+<script>
+  function togglePw() {
+    const i = document.getElementById('senha');
+    i.type = i.type === 'password' ? 'text' : 'password';
+  }
+</script>
+</body>
+</html>

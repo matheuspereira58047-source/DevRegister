@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Criar conta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080809;
+      --surface: #0f0f11;
+      --surface2: #141416;
+      --border: #1c1c20;
+      --border2: #2a2a30;
+      --accent: #ffffff;
+      --accent2: #a0a0b0;
+      --muted: #44444f;
+      --text: #e8e8f0;
+      --danger: #ff4444;
+      --r: 12px;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+    .dot-group { display: flex; gap: 5px; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border2);
+    }
+    .badge {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 8px;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.25rem;
+    }
+    .sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .sub a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border2);
+      padding-bottom: 1px;
+    }
+    .sub a:hover { color: var(--accent); border-color: var(--accent2); }
+    .field { margin-bottom: 1rem; }
+    label {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+    input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus { border-color: var(--border2); }
+    input::placeholder { color: var(--muted); font-size: 0.85rem; }
+    .pw-wrap { position: relative; }
+    .pw-wrap input { padding-right: 2.8rem; }
+    .eye {
+      position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; padding: 0; line-height: 1;
+    }
+    .eye:hover { color: var(--accent2); }
+    .eye svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .bar-wrap { margin-top: 7px; display: flex; gap: 4px; }
+    .bar-seg {
+      flex: 1; height: 2px; border-radius: 1px;
+      background: var(--border);
+      transition: background 0.3s;
+    }
+    .bar-label { font-size: 0.7rem; color: var(--muted); margin-top: 5px; }
+    .btn {
+      width: 100%; margin-top: 1.4rem;
+      padding: 0.75rem;
+      background: var(--accent);
+      color: #080809;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      border: none; border-radius: var(--r);
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      letter-spacing: 0.01em;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn:active { transform: scale(0.99); }
+    .divider {
+      height: 1px; background: var(--border);
+      margin: 1.8rem 0;
+    }
+    footer {
+      margin-top: 2.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    footer span { color: var(--border2); }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="dot-group">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span class="badge">REGISTRO</span>
+  </div>
+
+  <h1>Criar conta</h1>
+  <p class="sub">Já tem uma conta? <a href="/login">Entrar agora</a></p>
+
+  <form method="POST" action="/registro">
+    <div class="field">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required autocomplete="name"/>
+    </div>
+
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email"/>
+    </div>
+
+    <div class="field">
+      <label for="senha">Senha</label>
+      <div class="pw-wrap">
+        <input type="password" id="senha" name="senha" placeholder="Mínimo 6 caracteres" required autocomplete="new-password" oninput="strength(this.value)"/>
+        <button type="button" class="eye" onclick="togglePw()" aria-label="Mostrar senha">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <div class="bar-wrap">
+        <div class="bar-seg" id="s1"></div>
+        <div class="bar-seg" id="s2"></div>
+        <div class="bar-seg" id="s3"></div>
+        <div class="bar-seg" id="s4"></div>
+      </div>
+      <p class="bar-label" id="bl"></p>
+    </div>
+
+    <button type="submit" class="btn">Criar conta</button>
+  </form>
+</div>
+
+<footer>desenvolvido por <span>//</span> MATHEUS.DEV</footer>
+
+<script>
+  function togglePw() {
+    const i = document.getElementById('senha');
+    i.type = i.type === 'password' ? 'text' : 'password';
+  }
+  function strength(v) {
+    let s = 0;
+    if (v.length >= 6) s++;
+    if (v.length >= 10) s++;
+    if (/[A-Z]/.test(v) && /[0-9]/.test(v)) s++;
+    if (/[^A-Za-z0-9]/.test(v)) s++;
+    const colors = ['#ff4444','#ff8800','#4488ff','#22cc66'];
+    const labels = ['Muito fraca','Fraca','Boa','Forte'];
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById('s'+i).style.background = i <= s ? colors[s-1] : 'var(--border)';
+    }
+    document.getElementById('bl').textContent = v.length ? labels[s-1] || '' : '';
+  }
+</script>
+</body>
+</html>
